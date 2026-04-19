@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iPhone Repair 4 Less | Expert iOS Diagnostics & Repair</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Apple-inspired Dark Theme Colors */
+            --bg-base: #000000;
+            --bg-surface: #1d1d1f;
+            --bg-surface-hover: #2d2d2f;
+            --text-primary: #f5f5f7;
+            --text-secondary: #86868b;
+            --accent-blue: #2997ff;
+            --accent-blue-hover: #0071e3;
+            --border-color: #424245;
+            --glass-bg: rgba(29, 29, 31, 0.72);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-base);
+            color: var(--text-primary);
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Reusable Classes */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .section-padding {
+            padding: 120px 0;
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #fff 0%, #a5a5a6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Custom Replicated Logo Block (NEW VERSION) */
+        .brand-logo-block {
+            font-size: 3.5px; /* Base scale for Navbar */
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: 'Impact', 'Arial Black', sans-serif;
+            line-height: 0.85;
+            width: max-content;
+            transition: transform 0.2s ease;
+        }
+
+        .brand-logo-block:hover {
+            transform: scale(1.02);
+        }
+
+        footer .brand-logo-block {
+            font-size: 5px; /* Scaled up slightly for the Footer */
+        }
+
+        .bl-top-section {
+            display: flex;
+            align-items: center;
+            gap: 0.8em;
+            margin-bottom: 0.1em;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .bl-phone-cracked {
+            width: 3.8em;
+            height: 7.2em;
+            color: #fff;
+        }
+
+        .bl-text-stack {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .bl-iphone { 
+            font-size: 5em; 
+            letter-spacing: -0.01em; 
+            margin-bottom: 0.05em; 
+        }
+
+        .bl-repair { 
+            font-size: 5em; 
+            letter-spacing: -0.01em; 
+        }
+
+        .bl-4less { 
+            font-size: 8em; 
+            letter-spacing: -0.03em; 
+            display: flex; 
+            align-items: center; 
+            margin-top: -0.05em;
+        }
+
+        .bl-ca-svg {
+            width: 0.5em;
+            height: 0.85em;
+            margin: 0 0.04em;
+            margin-top: -0.05em;
+        }
+
+        .bl-swoosh {
+            width: 100%;
+            margin-top: 0.4em;
+            color: #fff;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: var(--glass-bg);
+            backdrop-filter: saturate(180%) blur(20px);
+            -webkit-backdrop-filter: saturate(180%) blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            min-height: 80px; 
+            padding: 12px 24px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+
+        .btn-primary {
+            background-color: var(--accent-blue);
+            color: #fff;
+            padding: 8px 16px;
+            border-radius: 980px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: background-color 0.2s ease, transform 0.2s ease;
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-blue-hover);
+            color: #fff !important;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 180px 0 100px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(41,151,255,0.15) 0%, rgba(0,0,0,0) 70%);
+            z-index: -1;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 6vw, 4.5rem);
+            font-weight: 700;
+            letter-spacing: -0.04em;
+            line-height: 1.05;
+            margin-bottom: 24px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero p {
+            font-size: clamp(1.1rem, 2vw, 1.3rem);
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 40px;
+            font-weight: 400;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 48px;
+            margin-top: 64px;
+            padding-top: 48px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .stat-item h4 {
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .stat-item p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Services Portfolio */
+        .section-header {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+        }
+
+        .section-header p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .service-card {
+            background-color: var(--bg-surface);
+            border-radius: 24px;
+            padding: 40px 32px;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card:hover {
+            transform: translateY(-4px);
+            background-color: var(--bg-surface-hover);
+            border-color: rgba(255,255,255,0.1);
+        }
+
+        .service-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(41, 151, 255, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+        }
+
+        .service-icon svg {
+            width: 24px;
+            height: 24px;
+            color: var(--accent-blue);
+        }
+
+        .service-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+
+        .service-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Reviews Section */
+        .reviews-section {
+            background-color: #0a0a0a;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+        }
+
+        .review-card {
+            background-color: var(--bg-base);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 32px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .stars {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 20px;
+        }
+
+        .stars svg {
+            width: 18px;
+            height: 18px;
+            fill: #F5C518;
+        }
+
+        .review-text {
+            font-size: 1rem;
+            color: var(--text-primary);
+            margin-bottom: 24px;
+            line-height: 1.6;
+        }
+
+        .review-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .author-avatar {
+            width: 40px;
+            height: 40px;
+            background: var(--bg-surface);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            color: var(--accent-blue);
+        }
+
+        .author-info h5 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .author-info p {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        /* Process Section */
+        .process-section {
+            background-color: var(--bg-base);
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            counter-reset: process-counter;
+        }
+
+        .process-step {
+            position: relative;
+            padding-top: 64px;
+        }
+
+        .process-step::before {
+            counter-increment: process-counter;
+            content: "0" counter(process-counter);
+            position: absolute;
+            top: 0;
+            left: 0;
+            font-size: 4rem;
+            font-weight: 700;
+            color: rgba(41, 151, 255, 0.15);
+            line-height: 1;
+            letter-spacing: -2px;
+        }
+
+        .process-step h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+
+        .process-step p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            background-color: var(--bg-surface);
+            border-top: 1px solid var(--border-color);
+        }
+
+        .faq-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--bg-base);
+            padding: 24px 32px;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+        }
+
+        .faq-item h4 {
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .faq-item p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        /* Footer */
+        footer {
+            padding: 80px 0 40px;
+            text-align: center;
+        }
+
+        .footer-cta {
+            margin-bottom: 64px;
+        }
+
+        .footer-cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 24px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--border-color);
+            padding-top: 32px;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none; /* In a real app, add a hamburger menu */
+            }
+            .hero {
+                padding: 180px 0 60px;
+            }
+            .hero-stats {
+                flex-direction: column;
+                gap: 32px;
+                align-items: center;
+            }
+            .section-padding {
+                padding: 80px 0;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+                gap: 24px;
+            }
+            .brand-logo-block {
+                font-size: 3px; /* Scale down slightly for mobile */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="container nav-content">
+            <!-- REPLICATED NEW LOGO (Cracked Phone + Swoosh) -->
+            <a href="#" style="text-decoration: none;">
+                <div class="brand-logo-block">
+                    <div class="bl-top-section">
+                        <div class="bl-phone-cracked">
+                            <!-- Cracked Phone SVG -->
+                            <svg viewBox="0 0 40 75" fill="none" stroke="currentColor" stroke-width="3">
+                                <rect x="2" y="2" width="36" height="71" rx="5" ry="5" />
+                                <path d="M 26 12 L 18 28 L 22 38 L 8 52" stroke-width="2"/>
+                                <path d="M 18 28 L 10 34" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <div class="bl-text-stack">
+                            <div class="bl-iphone">iPHONE</div>
+                            <div class="bl-repair">REPAIR</div>
+                        </div>
+                    </div>
+                    <div class="bl-4less">
+                        4<svg class="bl-ca-svg" viewBox="0 0 64 80" fill="currentColor"><path d="M 12 0 L 32 5 L 28 20 L 50 50 L 64 68 L 54 80 L 38 78 L 26 64 L 14 44 L 4 24 Z" /></svg>E$$
+                    </div>
+                    <div class="bl-swoosh">
+                        <!-- Curved Swoosh SVG -->
+                        <svg viewBox="0 0 200 15" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M 0 14 Q 100 0 200 14" />
+                        </svg>
+                    </div>
+                </div>
+            </a>
+
+            <div class="nav-links">
+                <a href="#expertise">Expertise</a>
+                <a href="#process">Process</a>
+                <a href="#reviews">Reviews</a>
+                <a href="#faq">FAQ</a>
+                <a href="#contact" class="btn-primary">Book Repair</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero container">
+        <h1 class="text-gradient">Advanced iPhone & iPad Restoration.</h1>
+        <p>Expert-level diagnostics, screen replacements, and battery upgrades. I fix the issues that keep your device from working its best.</p>
+        <div style="display: flex; gap: 16px; justify-content: center; margin-top: 32px;">
+            <a href="#contact" class="btn-primary" style="padding: 12px 24px; font-size: 1rem;">Get a Free Quote</a>
+            <a href="#expertise" style="color: var(--text-primary); text-decoration: none; padding: 12px 24px; font-size: 1rem; font-weight: 500; border: 1px solid var(--border-color); border-radius: 980px; transition: background 0.2s;">View Services</a>
+        </div>
+
+        <div class="hero-stats">
+            <div class="stat-item">
+                <h4>1,000+</h4>
+                <p>Devices Saved</p>
+            </div>
+            <div class="stat-item">
+                <h4>Pro</h4>
+                <p>Diagnostics</p>
+            </div>
+            <div class="stat-item">
+                <h4>4.8</h4>
+                <p>Verified Rating</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expertise / Services Portfolio -->
+    <section id="expertise" class="section-padding container">
+        <div class="section-header">
+            <h2>Technical Expertise</h2>
+            <p>Comprehensive hardware and software solutions for iOS and iPadOS.</p>
+        </div>
+
+        <div class="services-grid">
+            <!-- Service 1: Bootloops -->
+            <div class="service-card">
+                <div class="service-icon">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path></svg>
+                </div>
+                <h3>Bootloops & Panic Logs</h3>
+                <p>Specializing in 3-minute restart issues, thermal sensor failures, and Apple Logo bootloops. I read the panic logs and replace the exact faulty sensor or part causing the failure.</p>
+            </div>
+
+            <!-- Service 2: Battery -->
+            <div class="service-card">
+                <div class="service-icon">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                </div>
+                <h3>OEM-Grade Batteries</h3>
+                <p>Restore your all-day battery life. I perform safe, properly sealed battery replacements for all iPhone and iPad models to prevent swelling and unexpected shutdowns.</p>
+            </div>
+
+            <!-- Service 3: Housing/Cosmetics -->
+            <div class="service-card">
+                <div class="service-icon">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                </div>
+                <h3>Complete Housing Swaps</h3>
+                <p>Shattered back glass or a severely bent frame? I meticulously transfer your phone's internal components into a pristine new housing, making it look factory-fresh.</p>
+            </div>
+
+            <!-- Service 4: Tech Support -->
+            <div class="service-card">
+                <div class="service-icon">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                </div>
+                <h3>Tech Help & Diagnostics</h3>
+                <p>Resolving iOS update failures, FaceID repair, and general tech support. If it has an Apple logo on it, I can troubleshoot it.</p>
+            </div>
+
+            <!-- Service 5: Screen Replacements -->
+            <div class="service-card">
+                <div class="service-icon">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="5" y="2" width="14" height="20" rx="2" ry="2" stroke-width="2"></rect><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01"></path></svg>
+                </div>
+                <h3>Screen Replacements</h3>
+                <p>Cracked glass, unresponsive touch, or dead pixels? I provide fast, high-quality screen replacements using premium aftermarket or OEM-grade displays.</p>
+            </div>
+
+            <!-- Service 6: Charging Ports & Cameras -->
+            <div class="service-card">
+                <div class="service-icon">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path></svg>
+                </div>
+                <h3>Charging Ports & Cameras</h3>
+                <p>Phone not taking a charge or camera failing to focus? I replace worn-out charging flex cables, broken camera lenses, and other modular components.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Process Section -->
+    <section id="process" class="process-section section-padding container">
+        <div class="section-header">
+            <h2>How It Works</h2>
+            <p>A transparent, streamlined process from broken to fully restored.</p>
+        </div>
+        <div class="process-grid">
+            <div class="process-step">
+                <h3>Free Diagnostic</h3>
+                <p>Top-of-the-line software and hardware diagnostics to help you fix what others can't.</p>
+            </div>
+            <div class="process-step">
+                <h3>Transparent Quote</h3>
+                <p>You receive a detailed breakdown of the required parts and labor. No hidden fees, no upselling. If it's not worth fixing, I'll tell you.</p>
+            </div>
+            <div class="process-step">
+                <h3>Precision Repair</h3>
+                <p>Using high-quality aftermarket or OEM-grade parts and advanced repair equipment, your device is repaired, resealed, and rigorously tested for quality assurance.</p>
+            </div>
+            <div class="process-step">
+                <h3>Return & Warranty</h3>
+                <p>Your device is returned to you working perfectly. All screen and battery replacements come backed by a full 1-year warranty against manufacturer defects.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section id="reviews" class="reviews-section section-padding">
+        <div class="container">
+            <div class="section-header">
+                <h2>Client Testimonials</h2>
+                <p>Real feedback from local repairs and satisfied customers.</p>
+            </div>
+
+            <div class="reviews-grid">
+                <!-- Review 1 -->
+                <div class="review-card">
+                    <div>
+                        <div class="stars">
+                            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        </div>
+                        <p class="review-text">"Chris fixed my phone for free!!! I was convinced my screen was done, it wasn't responding to the touch, I was easy money for Chris, and he decided to be honest on doing a restart on my i phone that I had no idea was possible. God bless Chris his business and most important his honesty with me today."</p>
+                    </div>
+                    <div class="review-author">
+                        <div class="author-avatar" style="background-color: #1b4937; color: white;">C</div>
+                        <div class="author-info">
+                            <h5>Carmen</h5>
+                            <p>Honest Diagnostic</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 2 -->
+                <div class="review-card">
+                    <div>
+                        <div class="stars">
+                            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        </div>
+                        <p class="review-text">"Just recently fixed my battery issue now have no problem quick in n out Been coming to this guy for about a year I’m reckless with my phone but he’s quick screens are amazing,"</p>
+                    </div>
+                    <div class="review-author">
+                        <div class="author-avatar" style="background-color: #9c4cba; color: white;">N</div>
+                        <div class="author-info">
+                            <h5>Neto Martinez</h5>
+                            <p>Battery & Screen Repair</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 3 -->
+                <div class="review-card">
+                    <div>
+                        <div class="stars">
+                            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        </div>
+                        <p class="review-text">"I damaged my screen while attempting to replace the battery on my iPhone 14 Pro Max, but Chris was able to replace it. Called him 30 mins before closing time, but he was still willing to see me. It literally took him 15 mins to do the work- I’m not exaggerating. Screen was high quality, and everything works perfectly. Efficient, friendly, knowledgeable service."</p>
+                    </div>
+                    <div class="review-author">
+                        <div class="author-avatar" style="background-color: #a82e5d; color: white;">J</div>
+                        <div class="author-info">
+                            <h5>Jimmy Duong</h5>
+                            <p>iPhone 14 Pro Max Screen</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="faq-section section-padding">
+        <div class="container">
+            <div class="section-header">
+                <h2>Frequently Asked Questions</h2>
+                <p>Common questions about my repair services and guarantees.</p>
+            </div>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h4>Will I lose my data during the repair?</h4>
+                    <p>For standard repairs like batteries and screens, your data is 100% safe. For more complex issues (like bootloops), I always prioritize data retention, though it's highly recommended to back up your device if it is currently functional.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>What kind of parts do you use?</h4>
+                    <p>I offer both high-quality aftermarket and premium OEM-grade parts to fit your budget. I also use genuine original pulls directly from donor devices to ensure factory-level performance.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>How long does a typical repair take?</h4>
+                    <p>Most battery and screen replacements take only 15 to 25 minutes. Backglass repairs and housing swaps generally take around 30 minutes to 2.5 hours.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>Do I need an appointment?</h4>
+                    <p>Yes, I operate <strong>strictly by appointment only</strong>. Please text, call, or email to get a free quote and schedule your drop-off time.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer / Contact -->
+    <footer id="contact" class="container">
+        <div class="footer-cta">
+            <h2 class="text-gradient">Ready to bring your device back to life?</h2>
+            <p style="color: var(--text-secondary); margin-bottom: 32px;">Contact me today with your device model and the issues you're experiencing for a free quote.</p>
+            <a href="tel:5594715837" class="btn-primary" style="padding: 16px 32px; font-size: 1.1rem;">Call or Text (559) 471-5837</a>
+        </div>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 32px; text-align: left; margin-bottom: 64px; border-top: 1px solid var(--border-color); padding-top: 64px;">
+            <div>
+                <h4 style="color: var(--text-primary); margin-bottom: 16px;">Contact</h4>
+                <p style="color: var(--text-secondary); margin-bottom: 8px;"><a href="tel:5594715837" style="color: inherit; text-decoration: none;">Text/Call: (559) 471-5837</a></p>
+                <p style="color: var(--text-secondary);">repair@iphonerepair4less.com</p>
+            </div>
+            <div>
+                <h4 style="color: var(--text-primary); margin-bottom: 16px;">Location</h4>
+                <p style="color: var(--text-secondary); margin-bottom: 8px;">Serving Locals within Visalia City Limits</p>
+            </div>
+            <div>
+                <h4 style="color: var(--text-primary); margin-bottom: 16px;">Hours (Appt Only)</h4>
+                <p style="color: var(--text-secondary); margin-bottom: 8px;">Mon - Sun: 9:00 AM - 9:00 PM</p>
+                <p style="color: var(--accent-blue); font-weight: 600;">*By Appointment Only*</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div style="display: flex; align-items: center; gap: 8px;">
+                <!-- REPLICATED NEW LOGO (FOOTER) -->
+                <div class="brand-logo-block">
+                    <div class="bl-top-section">
+                        <div class="bl-phone-cracked">
+                            <svg viewBox="0 0 40 75" fill="none" stroke="currentColor" stroke-width="3">
+                                <rect x="2" y="2" width="36" height="71" rx="5" ry="5" />
+                                <path d="M 26 12 L 18 28 L 22 38 L 8 52" stroke-width="2"/>
+                                <path d="M 18 28 L 10 34" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <div class="bl-text-stack">
+                            <div class="bl-iphone">iPHONE</div>
+                            <div class="bl-repair">REPAIR</div>
+                        </div>
+                    </div>
+                    <div class="bl-4less">
+                        4<svg class="bl-ca-svg" viewBox="0 0 64 80" fill="currentColor"><path d="M 12 0 L 32 5 L 28 20 L 50 50 L 64 68 L 54 80 L 38 78 L 26 64 L 14 44 L 4 24 Z" /></svg>E$$
+                    </div>
+                    <div class="bl-swoosh">
+                        <svg viewBox="0 0 200 15" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M 0 14 Q 100 0 200 14" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            <p>&copy; 2026. All Rights Reserved. Independent Repair Provider.</p>
+            <div style="display: flex; gap: 16px;">
+                <span>Open 9AM-9PM</span>
+                <span>•</span>
+                <span>Appt Only</span>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
